@@ -17,13 +17,23 @@
     </div>
     <div>
         <ul>
-        {% for stage in tabStages %}
-            <li>{{ stage }} <a href=./stages/{{ stage }}>Lien</a></li>
+        {% for stage in stages %}
+            <li>{{stage.titre}}</li>
         {% endfor %}
         </ul>
     </div>
     <div>
-        <a href=./formations>Trier par formations</a><br>
-        <a href=./entreprises>Trier par entreprises</a>
+        <ul>
+        {% for entreprise in entreprises %}
+            <li>{{entreprise.nom}}</li>
+        {% endfor %}
+        </ul>
+    </div>
+    <div>
+        <ul>
+        {% for formation in formations %}
+            <li>{{formation.nomCourt}}</li>
+        {% endfor %}
+        </ul>
     </div>
 {% endblock %}

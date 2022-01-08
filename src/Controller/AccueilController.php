@@ -30,9 +30,9 @@ class AccueilController extends AbstractController
         //Envoyer les données récupérées
         return $this->render('accueil/index.html.twig', [
             'controller_name' => 'AccueilController',
-            'entreprises => $donneesEntreprises',
-            'formations => $donneesFormations',
-            'stages => $donneesStages',
+            'entreprises' => $donneesEntreprises,
+            'formations' => $donneesFormations,
+            'stages' => $donneesStages
         ]);
     }
 }
