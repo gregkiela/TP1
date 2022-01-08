@@ -25,14 +25,14 @@
     <div>
         <ul>
         {% for entreprise in entreprises %}
-            <li>{{entreprise.nom}}</li>
+            <li><a href=/entreprises/{{entreprise.id}}>{{entreprise.nom}}</a></li>
         {% endfor %}
         </ul>
     </div>
     <div>
         <ul>
         {% for formation in formations %}
-            <li>{{formation.nomCourt}}</li>
+            <li><a href= /formations/{{formation.id}}>{{formation.nomCourt}}</a></li>
         {% endfor %}
         </ul>
     </div>

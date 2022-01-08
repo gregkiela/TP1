@@ -15,7 +15,6 @@ class StagesController extends AbstractController
     {
         return $this->render('stages/index.html.twig', [
             'controller_name' => 'StagesController','id'=>$id,
-
         ]);
     }
 }

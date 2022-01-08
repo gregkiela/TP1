@@ -8,7 +8,7 @@
     </style>
 
     <div class="example-wrapper">
-        <h1>Liste des stages triés par Entreprises</h1>
+        <h1>Liste des stages triés par l'entreprises</h1>
     </div>
 {% endblock %}
 {% block body %}
@@ -18,12 +18,10 @@
     <div>
         <ul>
         {% for stage in tabStages %}
-            <li>{{ stage }} <a href=./stages/{{ stage }}>Lien</a></li>
         {% endfor %}
         </ul>
     </div>
     <div>
-        <a href=./formations>Trier par formations</a><br>
         <a href=./>Revenir à l'accueil</a>
     </div>
 {% endblock %}
