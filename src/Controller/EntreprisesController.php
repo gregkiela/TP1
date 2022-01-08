@@ -18,16 +18,13 @@ class EntreprisesController extends AbstractController
     {
         //Récupérer le repository de nos entités Entreprise, Formation et Stage
         $entrepriseRepository = $this->getDoctrine()->getRepository(Entreprise::class);
-        $stageRepository = $this->getDoctrine()->getRepository(Stage::class);
 
         //Récupérer les donneées stockés dans notre base;
-        $donneesEntreprises = $entrepriseRepository->findAll();
-        $donneesStages = $stageRepository->findAll();
+        $donneesEntreprise = $entrepriseRepository->find($id);
 
         return $this->render('entreprises/index.html.twig', [
             'controller_name' => 'EntreprisesController','id'=>$id,
-            'entreprises' => $donneesEntreprises,
-            'stages' => $donneesStages,
+            'entreprise' => $donneesEntreprise,
         ]);
     }
 }

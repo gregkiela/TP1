@@ -13,13 +13,16 @@
 {% endblock %}
 {% block body %}
     <div>
-        <p>Voici la liste des stages triés par entreprises :</p>
+        <p>Voici la liste des stages triés par l'entreprise {{entreprise.nom}} :</p>
     </div>
     <div>
         <ul>
+        {% for stage in entreprise.stage %}
+            <li><a href=.././stages/{stage.id})>{{stage.titre}}</a></li>
+        {% endfor %}
         </ul>
     </div>
     <div>
-        <a href=../.>Revenir à l'accueil</a>
+        <a href={{path('accueil')}}>Revenir à l'accueil</a>
     </div>
 {% endblock %}

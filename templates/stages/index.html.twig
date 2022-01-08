@@ -16,7 +16,18 @@
         <p>Voici les détail du stage :</p>
     </div>
     <div>
-        <p>Pas de détails pour le moment</p>
+        <h1>Titre</h1>
+        {{stage.titre}}
+        <h1>Description</h1>
+        {{stage.description}}
+        <h1>Mail</h1>
+        {{stage.email}}
+        <h1>Entreprise</h1>
+        {{entreprise.nom}}
+        <h1>Formation(s)</h1>
+        {% for formation in formations %}
+        <a href = .././formations/{{formation.id}}>{{formation.nomCourt}}</a><br>
+        {% endfor %}
     </div>
     <div>
         <a href=../>Revenir à l'accueil</a>
