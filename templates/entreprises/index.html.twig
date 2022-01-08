@@ -13,12 +13,12 @@
 {% endblock %}
 {% block body %}
     <div>
-        <p>Voici la liste des stages triés par l'entreprise {{entreprise.nom}} :</p>
+        <p>Voici la liste des stages triés pour l'entreprise {{entreprise.nom}} :</p>
     </div>
     <div>
         <ul>
-        {% for stage in entreprise.stage %}
-            <li><a href=.././stages/{stage.id})>{{stage.titre}}</a></li>
+        {% for stage in stages %}
+            <li><a href=.././stages/{{stage.id}})>{{stage.titre}}</a></li>
         {% endfor %}
         </ul>
     </div>

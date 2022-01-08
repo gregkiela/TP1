@@ -21,10 +21,11 @@ class EntreprisesController extends AbstractController
 
         //Récupérer les donneées stockés dans notre base;
         $donneesEntreprise = $entrepriseRepository->find($id);
+        $stages = $donneesEntreprise->getStage(); 
 
         return $this->render('entreprises/index.html.twig', [
             'controller_name' => 'EntreprisesController','id'=>$id,
-            'entreprise' => $donneesEntreprise,
+            'entreprise' => $donneesEntreprise, 'stages'=>$stages,
         ]);
     }
 }
