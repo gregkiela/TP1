@@ -21,13 +21,13 @@ class FormationsController extends AbstractController
         $stageRepository = $this->getDoctrine()->getRepository(Stage::class);
 
         //Récupérer les donneées stockés dans notre base;
-        $donneesFormations = $formationRepository->findAll();
-        $donneesStages = $stageRepository->findAll();
+        $donneesFormations = $formationRepository->find($id);
+        $stages = $donneesFormations->getStage();
 
         return $this->render('formations/index.html.twig', [
             'controller_name' => 'FormationsController','id'=>$id,            
             'formations' => $donneesFormations,
-            'stages' => $donneesStages
+            'stages' => $stages,
         ]);
     }
 }
