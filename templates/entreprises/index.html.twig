@@ -8,20 +8,28 @@
     </style>
 
     <div class="example-wrapper">
-        <h1>Liste des stages triés par l'entreprises</h1>
+        <h1>Liste des stages triés par l'entreprises {{entreprise.nom}}</h1>
     </div>
 {% endblock %}
 {% block body %}
-    <div>
-        <p>Voici la liste des stages triés pour l'entreprise {{entreprise.nom}} :</p>
+<div class="container-fluid">
+    <div class="row">
+        <div class="col-md-12">
+            {% block stages %} 
+                {% for stage in stages %}
+                    <div class="card">
+                        <h5 class="card-header">    
+                            <a href=.././stages/{{stage.id}})>{{stage.titre}}</a>
+                        </h5>
+                        <div class="card-body">
+                            <p class="card-text"></p>
+                        </div>                        
+                    </div>                
+                {% endfor %}
+            {% endblock %}
+        </div>
     </div>
-    <div>
-        <ul>
-        {% for stage in stages %}
-            <li><a href=.././stages/{{stage.id}})>{{stage.titre}}</a></li>
-        {% endfor %}
-        </ul>
-    </div>
+</div>
     <div>
         <a href={{path('accueil')}}>Revenir à l'accueil</a>
     </div>
