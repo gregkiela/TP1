@@ -25,7 +25,17 @@
                             <div class="card-body">
                                 <ul class="list-unstyled">
                                     {% for entreprise in entreprises %}
-                                        <li><a href=/entreprises/{{entreprise.id}} text-decoration:none>{{entreprise.nom}}</a></li>
+                                        <div class="row">
+                                            <div class="col-md-4">
+                                                <li>{{entreprise.nom}}</li>
+                                            </div>
+                                            <div class="col-md-4">                                        
+                                                <a href=/entreprises/{{entreprise.id}}> Trier par</a>
+                                            </div>
+                                            <div class="col-md-4">
+                                                <a href=/description/entreprise/{{entreprise.id}}> Détails</a>
+                                            </div>
+                                        </div>                                        
                                     {% endfor %}
                                 </ul>
                             </div>                        
@@ -44,7 +54,17 @@
                             <div class="card-body">
                                 <ul class="list-unstyled">
                                     {% for formation in formations %}
-                                        <li><a href= /formations/{{formation.id}} text-decoration:none>{{formation.nomCourt}}</a></li>
+                                        <div class="row">
+                                            <div class="col-md-4">
+                                                <li>{{formation.nomCourt}}</li>
+                                            </div>
+                                            <div class="col-md-4">                                        
+                                                <a href=/formations/{{formation.id}}> Trier par</a>
+                                            </div>
+                                            <div class="col-md-4">
+                                                <a href=/description/formation/{{formation.id}}> Détails</a>
+                                            </div>
+                                        </div>  
                                     {% endfor %}
                                 </ul>
                             </div>                        
@@ -58,7 +78,7 @@
                 {% for stage in stages %}
                     <div class="card">
                         <h5 class="card-header">    
-                            <a href=/stages/{{stage.id}} text-decoration:none>{{stage.titre}}</a>
+                            <a href=/stages/{{stage.id}} class="text-decoration-none">{{stage.titre}}</a>
                         </h5>
                         <div class="card-body">
                             <p class="card-text"></p>

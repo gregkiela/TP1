@@ -51,7 +51,21 @@
 						Entreprise concernée
 					</h4>
 					<p>
-                        <a href = .././entreprises/{{entreprise.id}}>{{entreprise.nom}}</a>				
+                        <div class="row">
+							<div class="col-md-4">
+								<div class="row">
+									<div class="col-md-4">
+										<li>{{entreprise.nom}}</li>
+									</div>
+									<div class="col-md-4">                                        
+										<a href=/entreprises/{{entreprise.id}}> Trier par</a>
+									</div>
+									<div class="col-md-4">
+										<a href=/description/entreprise/{{entreprise.id}}> Détails</a>
+									</div>
+								</div>
+							</div>
+						</div>  				
                     </p>
 				</div>
 			</div>
@@ -62,7 +76,21 @@
 					</h4>
 					<p>
                         {% for formation in formations %}
-                            <a href = .././formations/{{formation.id}}>{{formation.nomCourt}}</a><br>
+                            <div class="row">
+								<div class="col-md-4">
+									<div class="row">
+										<div class="col-md-4">
+											<li>{{formation.nomCourt}}</li>
+										</div>
+										<div class="col-md-4">                                        
+											<a href=/formations/{{formation.id}}> Trier par</a>
+										</div>
+										<div class="col-md-4">
+											<a href=/description/formation/{{formation.id}}> Détails</a>
+										</div>
+									</div>
+								</div>
+							</div>  
                         {% endfor %}					
                     </p>
 				</div>
