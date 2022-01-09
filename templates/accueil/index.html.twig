@@ -12,28 +12,61 @@
     </div>
 {% endblock %}
 {% block body %}
-    <div>
-        <p>Voici la liste des stages :</p>
+<div class="container-fluid">
+    <div class="row">              
+        <div class="col-md-4">
+            {% block entreprises %}  
+                <div class="row">
+                    <div class="col-md-12">
+                        <div class="card">
+                            <h5 class="card-header">    
+                                Entreprises
+                            </h5>
+                            <div class="card-body">
+                                <ul class="list-unstyled">
+                                    {% for entreprise in entreprises %}
+                                        <li><a href=/entreprises/{{entreprise.id}} text-decoration:none>{{entreprise.nom}}</a></li>
+                                    {% endfor %}
+                                </ul>
+                            </div>                        
+                        </div>
+                    </div>
+                </div>                              
+            {% endblock %}
+
+            {% block formations %}   
+                <div class="row">
+                    <div class="col-md-12">
+                    <div class="card">
+                            <h5 class="card-header">    
+                                Formations
+                            </h5>
+                            <div class="card-body">
+                                <ul class="list-unstyled">
+                                    {% for formation in formations %}
+                                        <li><a href= /formations/{{formation.id}} text-decoration:none>{{formation.nomCourt}}</a></li>
+                                    {% endfor %}
+                                </ul>
+                            </div>                        
+                        </div>
+                    </div>
+                </div>
+            {% endblock %}
+        </div>
+        {% block stages %} 
+            <div class="col-md-8">
+                {% for stage in stages %}
+                    <div class="card">
+                        <h5 class="card-header">    
+                            <a href=/stages/{{stage.id}} text-decoration:none>{{stage.titre}}</a>
+                        </h5>
+                        <div class="card-body">
+                            <p class="card-text"></p>
+                        </div>                        
+                    </div>                
+                {% endfor %}
+            </div>    
+        {% endblock %}
     </div>
-    <div>
-        <ul>
-        {% for stage in stages %}
-            <li><a href=/stages/{{stage.id}}>{{stage.titre}}</a></li>
-        {% endfor %}
-        </ul>
-    </div>
-    <div>
-        <ul>
-        {% for entreprise in entreprises %}
-            <li><a href=/entreprises/{{entreprise.id}}>{{entreprise.nom}}</a></li>
-        {% endfor %}
-        </ul>
-    </div>
-    <div>
-        <ul>
-        {% for formation in formations %}
-            <li><a href= /formations/{{formation.id}}>{{formation.nomCourt}}</a></li>
-        {% endfor %}
-        </ul>
-    </div>
+</div>
 {% endblock %}
