@@ -1,20 +1,65 @@
 {% extends 'base.html.twig' %}
 
-{% block title %}Hello DescriptionEntrepriseController!{% endblock %}
+{% block title %}{{parent()}}{% endblock %}
+{% block header %}
+    <style>
+        .example-wrapper { margin: 1em auto; max-width: 800px; width: 95%; font: 18px/1.5 sans-serif; text-align: center }
+        .example-wrapper code { background: #F5F5F5; padding: 2px 6px; }
+    </style>
 
+    <div class="example-wrapper">
+        <h1>Détail de l'entreprise</h1>
+    </div>
+{% endblock %}
 {% block body %}
-<style>
-    .example-wrapper { margin: 1em auto; max-width: 800px; width: 95%; font: 18px/1.5 sans-serif; }
-    .example-wrapper code { background: #F5F5F5; padding: 2px 6px; }
-</style>
-
-<div class="example-wrapper">
-    <h1>Hello {{ controller_name }}! ✅</h1>
-
-    This friendly message is coming from:
-    <ul>
-        <li>Your controller at <code><a href="{{ 'C:/Temp/symfony/prostages/src/Controller/DescriptionEntrepriseController.php'|file_link(0) }}">src/Controller/DescriptionEntrepriseController.php</a></code></li>
-        <li>Your template at <code><a href="{{ 'C:/Temp/symfony/prostages/templates/description_entreprise/index.html.twig'|file_link(0) }}">templates/description_entreprise/index.html.twig</a></code></li>
-    </ul>
+<div class="container-fluid">
+	<div class="row">
+		<div class="col-md-12">
+			<div class="row">
+				<div class="col-md-12">
+					<h4>
+						Nom
+					</h4>
+					<p>
+                        {{entreprise.nom}}
+                    </p>
+				</div>
+			</div>
+			<div class="row">
+				<div class="col-md-12">
+					<h4>
+						Activité
+					</h4>
+					<p>
+                        {{entreprise.activite}}
+                    </p>
+				</div>
+			</div>
+			<div class="row">
+				<div class="col-md-12">
+					<h4>
+						Adresse
+					</h4>
+					<p>
+                        {{entreprise.adresse}}					
+                    </p>
+				</div>
+			</div>
+			<div class="row">
+				<div class="col-md-12">
+					<h4>
+						URL
+					</h4>
+					<p>
+                        {{entreprise.urlSite}}			
+                    </p>
+				</div>
+			</div>
+			
+            <div>
+                <a href=.././>Revenir à l'accueil</a>
+            </div>
+		</div>
+	</div>
 </div>
 {% endblock %}
