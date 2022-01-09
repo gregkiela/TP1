@@ -58,10 +58,10 @@
 										<li>{{entreprise.nom}}</li>
 									</div>
 									<div class="col-md-4">                                        
-										<a href=/entreprises/{{entreprise.id}}> Trier par</a>
+										<a href=/entreprises/{{entreprise.id}} class="text-black"> Trier par</a>
 									</div>
 									<div class="col-md-4">
-										<a href=/description/entreprise/{{entreprise.id}}> Détails</a>
+										<a href=/description/entreprise/{{entreprise.id}} class="text-black"> Détails</a>
 									</div>
 								</div>
 							</div>
@@ -83,10 +83,10 @@
 											<li>{{formation.nomCourt}}</li>
 										</div>
 										<div class="col-md-4">                                        
-											<a href=/formations/{{formation.id}}> Trier par</a>
+											<a href=/formations/{{formation.id}} class="text-black"> Trier par</a>
 										</div>
 										<div class="col-md-4">
-											<a href=/description/formation/{{formation.id}}> Détails</a>
+											<a href=/description/formation/{{formation.id}} class="text-black"> Détails</a>
 										</div>
 									</div>
 								</div>
@@ -96,7 +96,7 @@
 				</div>
 			</div>
             <div>
-                <a href=.././>Revenir à l'accueil</a>
+                <a href={{path('accueil')}} class="text-black">Revenir à l'accueil</a>
             </div>
 		</div>
 	</div>

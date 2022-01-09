@@ -22,7 +22,7 @@
                 {% for stage in stages %}
                     <div class="card">
                         <h5 class="card-header">    
-                            <a href=.././stages/{{stage.id}})>{{stage.titre}}</a>
+                            <a href=.././stages/{{stage.id}}) class="text-black">{{stage.titre}}</a>
                         </h5>
                         <div class="card-body">
                             <p class="card-text">{{stage.description}}</p>
@@ -32,7 +32,7 @@
             {% endblock %}
         </div>
         <div>
-            <a href={{path('accueil')}}>Revenir à l'accueil</a>
+            <a href={{path('accueil')}} class="text-black">Revenir à l'accueil</a>
         </div>
     </div>
 </div>
