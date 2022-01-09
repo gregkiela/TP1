@@ -7,29 +7,63 @@
         .example-wrapper code { background: #F5F5F5; padding: 2px 6px; }
     </style>
 
-    <div class="example-wrapper">
-        <h1>Bienvenue sur la page du stage {{ id }}</h1>
+    <div class="text-center">
+        <h1>Détail sur le stage</h1>
     </div>
 {% endblock %}
 {% block body %}
-    <div>
-        <p>Voici les détail du stage :</p>
-    </div>
-    <div>
-        <h1>Titre</h1>
-        {{stage.titre}}
-        <h1>Description</h1>
-        {{stage.description}}
-        <h1>Mail</h1>
-        {{stage.email}}
-        <h1>Entreprise</h1>
-        <a href = .././entreprises/{{entreprise.id}}>{{entreprise.nom}}</a>
-        <h1>Formation(s)</h1>
-        {% for formation in formations %}
-        <a href = .././formations/{{formation.id}}>{{formation.nomCourt}}</a><br>
-        {% endfor %}
-    </div>
-    <div>
-        <a href=.././>Revenir à l'accueil</a>
-    </div>
+<div class="container-fluid">
+	<div class="row">
+		<div class="col-md-12">
+			<h3>
+				{{stage.titre}}
+			</h3>
+			<div class="row">
+				<div class="col-md-12">
+					<h4>
+						Description de la mission
+					</h4>
+					<p>
+                        {{stage.description}}
+                    </p>
+				</div>
+			</div>
+			<div class="row">
+				<div class="col-md-12">
+					<h4>
+						Mail de contact
+					</h4>
+					<p>
+                        {{stage.email}}					
+                    </p>
+				</div>
+			</div>
+			<div class="row">
+				<div class="col-md-12">
+					<h4>
+						Entreprise concernée
+					</h4>
+					<p>
+                        <a href = .././entreprises/{{entreprise.id}}>{{entreprise.nom}}</a>				
+                    </p>
+				</div>
+			</div>
+			<div class="row">
+				<div class="col-md-12">
+					<h4>
+						Formations concernées
+					</h4>
+					<p>
+                        {% for formation in formations %}
+                            <a href = .././formations/{{formation.id}}>{{formation.nomCourt}}</a><br>
+                        {% endfor %}					
+                    </p>
+				</div>
+			</div>
+            <div>
+                <a href=.././>Revenir à l'accueil</a>
+            </div>
+		</div>
+	</div>
+</div>
 {% endblock %}
