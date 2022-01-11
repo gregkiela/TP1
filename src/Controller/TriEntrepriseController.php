@@ -9,19 +9,22 @@ use Symfony\Component\Routing\Annotation\Route;
 use App\Entity\Formation;
 use App\Entity\Entreprise;
 
+use App\Repository\EntrepriseRepository;
+use App\Repository\FormationRepository;
+
 class TriEntrepriseController extends AbstractController
 {
     /**
      * @Route("/entreprises/{id}", name="tri_entreprise")
      */
-    public function index($id): Response
+    public function index(EntrepriseRepository $entrepriseRepository, FormationRepository $formationRepository,Entreprise $entreprise): Response
     {
         //Récupérer le repository de nos entités Entreprise, Formation et Stage
-        $entrepriseRepository = $this->getDoctrine()->getRepository(Entreprise::class);
-        $formationRepository = $this->getDoctrine()->getRepository(Formation::class);
+        //$entrepriseRepository = $this->getDoctrine()->getRepository(Entreprise::class);
+        //$formationRepository = $this->getDoctrine()->getRepository(Formation::class);
 
         //Récupérer les donneées stockés dans notre base;
-        $entreprise = $entrepriseRepository->find($id);
+        //$entreprise = $entrepriseRepository->find($id);
         $stages = $entreprise->getStage();
 
         $donneesEntreprises = $entrepriseRepository->findAll();
