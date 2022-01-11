@@ -13,9 +13,57 @@
 {% endblock %}
 {% block body %}
 <div class="container-fluid">
-    <div class="row">
-        <div class="col-md-12">
-            {% for entreprise in entreprises %}
+    <div class="row">              
+        <div class="col-md-4">
+            {% block entreprises %}  
+                <div class="row">
+                    <div class="col-md-12">
+                        <div class="card">
+                            <h5 class="card-header">
+                                <a href=/entreprises class= "text-black"> Entreprises</a>                               
+                            </h5>
+                            <div class="card-body">
+                                <ul class="list-unstyled">
+                                    {% for entreprise in entreprises %}
+                                        <div class="row">
+                                            <div class="col-md-12">
+                                                <li><a href={{ path('tri_entreprise', {'id' : entreprise.id}) }} class="text-black">{{entreprise.nom}}</a></li>
+                                            </div>
+                                        </div>                                        
+                                    {% endfor %}
+                                </ul>
+                            </div>                        
+                        </div>
+                    </div>
+                </div>                              
+            {% endblock %}
+
+            {% block formations %}   
+                <div class="row">
+                    <div class="col-md-12">
+                    <div class="card">
+                            <h5 class="card-header">    
+                                <a href=/formations class= "text-black"> Formations</a>
+                            </h5>
+                            <div class="card-body">
+                                <ul class="list-unstyled">
+                                    {% for formation in formations %}
+                                        <div class="row">
+                                            <div class="col-md-12">
+                                                <li><a href={{ path('tri_formation', {'id' : formation.id}) }}) class="text-black">{{formation.nomCourt}}</a></li>
+                                            </div>
+                                        </div>  
+                                    {% endfor %}
+                                </ul>
+                            </div>                        
+                        </div>
+                    </div>
+                </div>
+            {% endblock %}
+        </div>
+        {% block stages %} 
+            <div class="col-md-8">
+                {% for entreprise in entreprises %}
                 <div class="card">
                     <h5 class="card-header">    
                         <a href={{ path('tri_entreprise', {'id' : entreprise.id}) }} class="text-black">{{entreprise.nom}}</a>
@@ -27,10 +75,8 @@
                     </div>                        
                 </div>                
             {% endfor %}
-        </div>
-        <div>
-            <a href={{path('accueil')}} class="text-black">Revenir à l'accueil</a>
-        </div>
+            </div>    
+        {% endblock %}
     </div>
 </div>
     

@@ -7,6 +7,7 @@ use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
 
 use App\Entity\Formation;
+use App\Entity\Entreprise;
 
 class TriFormationController extends AbstractController
 {
@@ -17,14 +18,20 @@ class TriFormationController extends AbstractController
     {
         //Récupérer le repository de nos entités Entreprise, Formation et Stage
         $formationRepository = $this->getDoctrine()->getRepository(Formation::class);
+        $entrepriseRepository = $this->getDoctrine()->getRepository(Entreprise::class);
 
         //Récupérer les donneées stockés dans notre base;
-        $donneesFormation = $formationRepository->find($id);
-        $stages = $donneesFormation->getStage();
+        $formation = $formationRepository->find($id);
+        $stages = $formation->getStage();
+
+        $donneesEntreprises = $entrepriseRepository->findAll();
+        $donneesFormations = $formationRepository->findAll();
 
         return $this->render('tri_formation/index.html.twig', [
             'controller_name' => 'TriFormationController',
-            'formation'=>$donneesFormation,'stages'=>$stages,
+            'formation'=>$formation,'stages'=>$stages,
+            'formations' => $donneesFormations,
+            'entreprises' =>$donneesEntreprises,
         ]);
     }
 }
