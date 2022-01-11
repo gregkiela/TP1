@@ -74,8 +74,11 @@
                         <p class="card-text"><b>URL :</b> {{entreprise.urlSite}}</p>
                     </div>                        
                 </div>                
-            {% endfor %}
-            </div>    
+                {% endfor %}
+                <div>
+                    <a href={{path('accueil')}} class="text-black">Revenir à l'accueil</a>
+                </div>
+            </div>  
         {% endblock %}
     </div>
 </div>
