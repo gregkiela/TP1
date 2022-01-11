@@ -18,7 +18,7 @@
             {% for entreprise in entreprises %}
                 <div class="card">
                     <h5 class="card-header">    
-                        <a href=.././entreprises/{{entreprise.id}}) class="text-black">{{entreprise.nom}}</a>
+                        <a href={{ path('tri_entreprise', {'id' : entreprise.id}) }}) class="text-black">{{entreprise.nom}}</a>
                     </h5>
                     <div class="card-body">
                         <p class="card-text"><b>Activité :</b> {{entreprise.activite}}</p>

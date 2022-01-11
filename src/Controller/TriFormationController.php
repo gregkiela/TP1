@@ -11,7 +11,7 @@ use App\Entity\Formation;
 class TriFormationController extends AbstractController
 {
     /**
-     * @Route("/formations/{id}", name="description_formation")
+     * @Route("/formations/{id}", name="tri_formation")
      */
     public function index($id): Response
     {

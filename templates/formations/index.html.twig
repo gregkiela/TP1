@@ -18,7 +18,7 @@
             {% for formation in formations %}
                 <div class="card">
                     <h5 class="card-header">
-                        <a href=.././formations/{{formation.id}}) class="text-black">{{formation.nomLong}}</a>
+                        <a href={{ path('tri_formation', {'id' : formation.id}) }}) class="text-black">{{formation.nomLong}}</a>
                     </h5>
                     <div class="card-body">
                         <p class="card-text"><b>Nom court :</b> {{formation.nomCourt}}</p>

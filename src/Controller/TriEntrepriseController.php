@@ -12,7 +12,7 @@ use App\Entity\Stage;
 class TriEntrepriseController extends AbstractController
 {
     /**
-     * @Route("/entreprises/{id}", name="description_entreprise")
+     * @Route("/entreprises/{id}", name="tri_entreprise")
      */
     public function index($id): Response
     {
