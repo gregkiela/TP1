@@ -1,6 +1,6 @@
 {% extends 'base.html.twig' %}
 
-{% block title %}{{parent()}}{% endblock %}
+{% block title %}{{parent()}} formations !{% endblock %}
 {% block header %}
     <style>
         .example-wrapper { margin: 1em auto; max-width: 800px; width: 95%; font: 18px/1.5 sans-serif; text-align: center }
@@ -18,7 +18,7 @@
             {% for formation in formations %}
                 <div class="card">
                     <h5 class="card-header">
-                        <a href={{ path('tri_formation', {'id' : formation.id}) }}) class="text-black">{{formation.nomLong}}</a>
+                        <a href={{ path('tri_formation', {'id' : formation.id}) }} class="text-black">{{formation.nomLong}}</a>
                     </h5>
                     <div class="card-body">
                         <p class="card-text"><b>Nom court :</b> {{formation.nomCourt}}</p>

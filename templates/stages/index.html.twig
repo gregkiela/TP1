@@ -1,6 +1,6 @@
 {% extends 'base.html.twig' %}
 
-{% block title %}{{parent()}}{% endblock %}
+{% block title %}{{parent()}} détail du stage !{% endblock %}
 {% block header %}
     <style>
         .example-wrapper { margin: 1em auto; max-width: 800px; width: 95%; font: 18px/1.5 sans-serif; text-align: center }
@@ -51,7 +51,7 @@
 						Entreprise concernée
 					</h4>
 					<p>
-						<a href=/entreprises/{{entreprise.id}} class="text-black"> {{entreprise.nom}}</a>				
+						<a href={{ path('tri_entreprise', {'id' : entreprise.id}) }} class="text-black"> {{entreprise.nom}}</a>				
                     </p>
 				</div>
 			</div>
@@ -64,7 +64,7 @@
                         {% for formation in formations %}
                             <div class="row">
 								<div class="col-md-12">
-									<li><a href=/formations/{{formation.id}} class="text-black"> {{formation.nomCourt}}</a></li>
+									<li><a href={{ path('tri_formation', {'id' : formation.id}) }} class="text-black"> {{formation.nomCourt}}</a></li>
 								</div>
 							</div>  
                         {% endfor %}					

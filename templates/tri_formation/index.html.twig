@@ -1,6 +1,6 @@
 {% extends 'base.html.twig' %}
 
-{% block title %}Hello DescriptionFormationController!{% endblock %}
+{% block title %}{{parent()}} stages par {{formation.nomLong}}{% endblock %}
 
 {% block header %}
     <style>
@@ -23,7 +23,7 @@
                 {% for stage in stages %}
                     <div class="card">
                         <h5 class="card-header">    
-                            <a href=.././stages/{{stage.id}}) class="text-black">{{stage.titre}}</a>
+                            <a href={{ path('stages', {'id' : stage.id}) }} class="text-black">{{stage.titre}}</a>
                         </h5>
                         <div class="card-body">
                             <p class="card-text">{{stage.description}}</p>

@@ -1,6 +1,6 @@
 {% extends 'base.html.twig' %}
 
-{% block title %}{{parent()}}{% endblock %}
+{% block title %}{{parent()}} stages par {{entreprise.nom}}{% endblock %}
 {% block header %}
     <style>
         .example-wrapper { margin: 1em auto; max-width: 800px; width: 95%; font: 18px/1.5 sans-serif; text-align: center }
@@ -22,7 +22,7 @@
                 {% for stage in stages %}
                     <div class="card">
                         <h5 class="card-header">    
-                            <a href=.././stages/{{stage.id}}) class="text-black">{{stage.titre}}</a>
+                            <a href={{ path('stages', {'id' : stage.id}) }} class="text-black">{{stage.titre}}</a>
                         </h5>
                         <div class="card-body">
                             <p class="card-text">{{stage.description}}</p>
