@@ -7,11 +7,12 @@ use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
 
 use App\Entity\Entreprise;
+use App\Entity\Stage;
 
-class DescriptionEntrepriseController extends AbstractController
+class TriEntrepriseController extends AbstractController
 {
     /**
-     * @Route("/description/entreprise/{id}", name="description_entreprise")
+     * @Route("/entreprises/{id}", name="description_entreprise")
      */
     public function index($id): Response
     {
@@ -20,9 +21,11 @@ class DescriptionEntrepriseController extends AbstractController
 
         //Récupérer les donneées stockés dans notre base;
         $donneesEntreprise = $entrepriseRepository->find($id);
+        $stages = $donneesEntreprise->getStage();
 
-        return $this->render('description_entreprise/index.html.twig', [
-            'controller_name' => 'DescriptionEntrepriseController','entreprise'=>$donneesEntreprise,
+        return $this->render('tri_entreprise/index.html.twig', [
+            'controller_name' => 'TriEntrepriseController',
+            'entreprise'=>$donneesEntreprise, 'stages'=>$stages,
         ]);
     }
 }

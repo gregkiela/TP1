@@ -1,0 +1,40 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Hello DescriptionFormationController!{% endblock %}
+
+{% block header %}
+    <style>
+        .example-wrapper { margin: 1em auto; max-width: 800px; width: 95%; font: 18px/1.5 sans-serif; text-align: center }
+        .example-wrapper code { background: #F5F5F5; padding: 2px 6px; }
+    </style>
+
+    <div class="example-wrapper">
+        <h1>Stage(s) acceptant la formation {{formation.nomLong}}</h1>
+    </div>
+{% endblock %}
+{% block body %}
+<div class="container-fluid">
+    <div class="row">
+        <div class="col-md-12">
+            {% block stages %}
+                {% if stages|length ==0 %}
+                    <h3>Pas de stage pour le moment</h3>
+                {% endif %}
+                {% for stage in stages %}
+                    <div class="card">
+                        <h5 class="card-header">    
+                            <a href=.././stages/{{stage.id}}) class="text-black">{{stage.titre}}</a>
+                        </h5>
+                        <div class="card-body">
+                            <p class="card-text">{{stage.description}}</p>
+                        </div>                        
+                    </div>                
+                {% endfor %}
+            {% endblock %}
+        </div>
+        <div>
+            <a href={{path('accueil')}} class="text-black">Revenir à l'accueil</a>
+        </div>
+    </div>
+</div>
+{% endblock %}

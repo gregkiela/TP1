@@ -8,28 +8,25 @@
     </style>
 
     <div class="example-wrapper">
-        <h1>Liste des stages triés par l'entreprise {{entreprise.nom}}</h1>
+        <h1>Toutes les entreprises</h1>
     </div>
 {% endblock %}
 {% block body %}
 <div class="container-fluid">
     <div class="row">
         <div class="col-md-12">
-            {% block stages %}
-                {% if stages|length ==0 %}
-                    <h3>Pas de stage pour le moment</h3>
-                {% endif %}
-                {% for stage in stages %}
-                    <div class="card">
-                        <h5 class="card-header">    
-                            <a href=.././stages/{{stage.id}}) class="text-black">{{stage.titre}}</a>
-                        </h5>
-                        <div class="card-body">
-                            <p class="card-text">{{stage.description}}</p>
-                        </div>                        
-                    </div>                
-                {% endfor %}
-            {% endblock %}
+            {% for entreprise in entreprises %}
+                <div class="card">
+                    <h5 class="card-header">    
+                        <a href=.././entreprises/{{entreprise.id}}) class="text-black">{{entreprise.nom}}</a>
+                    </h5>
+                    <div class="card-body">
+                        <p class="card-text"><b>Activité :</b> {{entreprise.activite}}</p>
+                        <p class="card-text"><b>Adresse :</b> {{entreprise.adresse}}</p>
+                        <p class="card-text"><b>URL :</b> {{entreprise.urlSite}}</p>
+                    </div>                        
+                </div>                
+            {% endfor %}
         </div>
         <div>
             <a href={{path('accueil')}} class="text-black">Revenir à l'accueil</a>

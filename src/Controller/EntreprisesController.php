@@ -7,25 +7,23 @@ use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
 
 use App\Entity\Entreprise;
-use App\Entity\Stage;
 
 class EntreprisesController extends AbstractController
 {
     /**
-     * @Route("/entreprises/{id}", name="entreprises")
+     * @Route("/entreprises", name="entreprises")
      */
-    public function index($id): Response
+    public function index(): Response
     {
         //Récupérer le repository de nos entités Entreprise, Formation et Stage
         $entrepriseRepository = $this->getDoctrine()->getRepository(Entreprise::class);
 
         //Récupérer les donneées stockés dans notre base;
-        $donneesEntreprise = $entrepriseRepository->find($id);
-        $stages = $donneesEntreprise->getStage(); 
+        $donneesEntreprises = $entrepriseRepository->findAll();
 
         return $this->render('entreprises/index.html.twig', [
-            'controller_name' => 'EntreprisesController','id'=>$id,
-            'entreprise' => $donneesEntreprise, 'stages'=>$stages,
+            'controller_name' => 'EntreprisesController',
+            'entreprises' => $donneesEntreprises,
         ]);
     }
 }
