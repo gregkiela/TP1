@@ -74,16 +74,27 @@ class AppFixtures extends Fixture
         );
 
         //Boucle création des formations
-        for ($i = 1; $i <= $nbFormations; $i++) {
+        for ($i = 0; $i < $nbFormations; $i++) {
             $formation = new Formation();
 
             $diplome = $diplomePossible[$faker->numberBetween(0, count($diplomePossible) - 1)];
+            $nomCourtDiplome = $diplome;
+            
+            $tabMotsDiplome = explode(" ", $diplome);
+        
+            if (count($tabMotsDiplome) != 1) {
+                $nomCourtDiplome = ' ';
+                for ($j = 0; $j < count($tabMotsDiplome); $j++) {
+                    $lettres = str_split($tabMotsDiplome[$j]);
+                    $nomCourtDiplome = $nomCourtDiplome . $lettres[0];
+                }
+            }
+            //$formation=$nomLongFormation;
+            $nomFormationCourt = $nomCourtDiplome . " " . $specialiteDisponible[$faker->numberBetween(0, count($specialiteDisponible) - 1)];
             $nomLongFormation = $diplome . " " .$specialiteDisponible[$faker->numberBetween(0, count($specialiteDisponible) - 1)];
-
-            $nomCourt = explode(" ",$diplome)[0];
-
+        
             $formation->setNomLong($nomLongFormation);
-            $formation->setNomCourt($nomCourt);
+            $formation->setNomCourt($nomFormationCourt);
 
             array_push($tabFormations, $formation);
 
