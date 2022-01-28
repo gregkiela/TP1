@@ -11,13 +11,14 @@ use App\Entity\Entreprise;
 
 use App\Repository\EntrepriseRepository;
 use App\Repository\FormationRepository;
+use App\Repository\StageRepository;
 
 class TriEntrepriseController extends AbstractController
 {
     /**
-     * @Route("/entreprises/{id}", name="tri_entreprise")
+     * @Route("/entreprises/{nom}", name="tri_entreprise")
      */
-    public function index(EntrepriseRepository $entrepriseRepository, FormationRepository $formationRepository,Entreprise $entreprise): Response
+    public function index($nom, EntrepriseRepository $entrepriseRepository, FormationRepository $formationRepository, StageRepository $stageRepository, Entreprise $entreprise): Response
     {
         //Récupérer le repository de nos entités Entreprise, Formation et Stage
         //$entrepriseRepository = $this->getDoctrine()->getRepository(Entreprise::class);
@@ -25,7 +26,7 @@ class TriEntrepriseController extends AbstractController
 
         //Récupérer les donneées stockés dans notre base;
         //$entreprise = $entrepriseRepository->find($id);
-        $stages = $entreprise->getStage();
+        $stages = $stageRepository -> trouverStagesParEntreprise($nom);
 
         $donneesEntreprises = $entrepriseRepository->findAll();
         $donneesFormations = $formationRepository->findAll();

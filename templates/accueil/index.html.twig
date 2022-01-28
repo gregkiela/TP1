@@ -27,7 +27,7 @@
                                     {% for entreprise in entreprises %}
                                         <div class="row">
                                             <div class="col-md-12">
-                                                <li><a href={{ path('tri_entreprise', {'id' : entreprise.id}) }} class="text-black">{{entreprise.nom}}</a></li>
+                                                <li><a href={{ path('tri_entreprise', {'nom' : entreprise.nom}) }} class="text-black">{{entreprise.nom}}</a></li>
                                             </div>
                                         </div>                                        
                                     {% endfor %}
@@ -50,7 +50,7 @@
                                     {% for formation in formations %}
                                         <div class="row">
                                             <div class="col-md-12">
-                                                <li><a href={{ path('tri_formation', {'id' : formation.id}) }}) class="text-black">{{formation.nomCourt}}</a></li>
+                                                <li><a href={{ path('tri_formation', {'nom' : formation.nomCourt}) }} class="text-black">{{formation.nomCourt}}</a></li>
                                             </div>
                                         </div>  
                                     {% endfor %}
