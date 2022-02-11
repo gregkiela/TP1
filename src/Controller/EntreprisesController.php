@@ -5,11 +5,16 @@ namespace App\Controller;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
+use Symfony\Component\HttpFoundation\Request;
+use Symfony\Component\Form\Extension\Core\Type\TextareaType;
+use Symfony\Component\Form\Extension\Core\Type\TextType;
+use Symfony\Component\Form\Extension\Core\Type\UrlType;
 
 use App\Repository\EntrepriseRepository;
 use App\Repository\FormationRepository;
-
 use App\Entity\Entreprise;
+
+use Doctrine\ORM\EntityManagerInterface;
 
 class EntreprisesController extends AbstractController
 {
@@ -36,17 +41,28 @@ class EntreprisesController extends AbstractController
     /**
      * @Route("/ajoutEntreprise", name="formulaireEntreprise")
      */
-    public function ajouterEntreprise()
+    public function ajouterEntreprise(Request $requetteHttp, EntityManagerInterface $manager)
     {
         $entreprise = new Entreprise();
 
         $formulaireEntreprise = $this -> createFormBuilder($entreprise)
-                                        ->add('nom')
-                                        ->add('activite')
-                                        ->add('adresse')
-                                        ->add('urlSite')
+                                        ->add('nom', TextType::class)
+                                        ->add('activite', TextareaType::class)
+                                        ->add('adresse',TextType::class)
+                                        ->add('urlSite',UrlType::class)
                                         ->getForm();
         
+
+        $formulaireEntreprise->handleRequest($requetteHttp);
+                        
+        if($formulaireEntreprise->isSubmitted())
+        {
+            $manager->persist($entreprise);
+            $manager->flush();
+
+            return $this->redirectToRoute('accueil');
+        }
+
         $vueFormulaireEntreprise = $formulaireEntreprise->createView();
 
         return $this->render('entreprises/ajoutEntreprise.html.twig',['vueFormulaireEntreprise' => $vueFormulaireEntreprise]);
