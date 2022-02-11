@@ -9,6 +9,8 @@ use Symfony\Component\Routing\Annotation\Route;
 use App\Repository\EntrepriseRepository;
 use App\Repository\FormationRepository;
 
+use App\Entity\Entreprise;
+
 class EntreprisesController extends AbstractController
 {
     /**
@@ -29,5 +31,24 @@ class EntreprisesController extends AbstractController
             'entreprises' => $donneesEntreprises,
             'formations' => $donneesFormations,
         ]);
+    }
+
+    /**
+     * @Route("/ajoutEntreprise", name="formulaireEntreprise")
+     */
+    public function ajouterEntreprise()
+    {
+        $entreprise = new Entreprise();
+
+        $formulaireEntreprise = $this -> createFormBuilder($entreprise)
+                                        ->add('nom')
+                                        ->add('activite')
+                                        ->add('adresse')
+                                        ->add('urlSite')
+                                        ->getForm();
+        
+        $vueFormulaireEntreprise = $formulaireEntreprise->createView();
+
+        return $this->render('entreprises/ajoutEntreprise.html.twig',['vueFormulaireEntreprise' => $vueFormulaireEntreprise]);
     }
 }

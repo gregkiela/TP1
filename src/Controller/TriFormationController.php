@@ -18,7 +18,7 @@ class TriFormationController extends AbstractController
     /**
      * @Route("/formations/{nom}", name="tri_formation")
      */
-    public function index($nom,EntrepriseRepository $entrepriseRepository, FormationRepository $formationRepository,StageRepository $stageRepository, Formation $formation): Response
+    public function index($nom,EntrepriseRepository $entrepriseRepository, FormationRepository $formationRepository,StageRepository $stageRepository): Response
     {
         //Récupérer le repository de nos entités Entreprise, Formation et Stage
         //$formationRepository = $this->getDoctrine()->getRepository(Formation::class);
@@ -26,6 +26,8 @@ class TriFormationController extends AbstractController
 
         //Récupérer les donneées stockés dans notre base;
         //$formation = $formationRepository->find($id);
+
+        $formation = $formationRepository->findOneBy(array("nomCourt"=>$nom));
         $stages = $stageRepository -> trouverStagesParFormation($nom);
 
         $donneesEntreprises = $entrepriseRepository->findAll();

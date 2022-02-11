@@ -31,7 +31,7 @@ class StageRepository extends ServiceEntityRepository
 
     public function trouverStagesParFormation($nom)
     {
-        $gestionnaireEntite = $this->getEntityManages();
+        $gestionnaireEntite = $this->getEntityManager();
 
         $requete = $gestionnaireEntite->createQuery('SELECT s FROM App\Entity\Stage s JOIN s.formation f WHERE f.nomCourt =:nomFormation');
         $requete->setParameter('nomFormation',$nom);
