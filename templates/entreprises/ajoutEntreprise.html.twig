@@ -17,10 +17,10 @@
         <div class="col-md-8 offset-2" >
             <div class="card"> 
                 {{ form_start (vueFormulaireEntreprise)}}
-                    {{ form_row (vueFormulaireEntreprise.nom)}}
-                    {{ form_row (vueFormulaireEntreprise.activite)}}
-                    {{ form_row (vueFormulaireEntreprise.adresse)}}
-                    {{ form_row (vueFormulaireEntreprise.urlSite)}}
+                    {{ form_row (vueFormulaireEntreprise.nom, {'attr':{'placeholder':"Nom de l'entreprise"}})}}
+                    {{ form_row (vueFormulaireEntreprise.activite,{'attr':{'placeholder':"Activité de l'entreprise"}})}}
+                    {{ form_row (vueFormulaireEntreprise.adresse,{'attr':{'placeholder':"Adresse de l'entreprise"}})}}
+                    {{ form_row (vueFormulaireEntreprise.urlSite,{'attr':{'placeholder':"URL de l'entreprise"}})}}
                     <button type="submit" class="btn-dark">Ajouter</button>
                 {{ form_end (vueFormulaireEntreprise)}}
             </div>
