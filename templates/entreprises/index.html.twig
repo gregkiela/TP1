@@ -32,6 +32,7 @@
                                         </div>                                        
                                     {% endfor %}
                                 </ul>
+                                <a href={{ path('formulaireEntreprise') }} class="text-black">Ajouter une entreprise</a>
                             </div>                        
                         </div>
                     </div>
@@ -72,6 +73,7 @@
                         <p class="card-text"><b>Activité :</b> {{entreprise.activite}}</p>
                         <p class="card-text"><b>Adresse :</b> {{entreprise.adresse}}</p>
                         <p class="card-text"><b>URL :</b> {{entreprise.urlSite}}</p>
+                        <a href={{ path('modifFormulaire', {'id' : entreprise.id}) }} class="text-black">Modifier</a>
                     </div>                        
                 </div>                
                 {% endfor %}
