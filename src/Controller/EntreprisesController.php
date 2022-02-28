@@ -13,6 +13,7 @@ use Symfony\Component\Form\Extension\Core\Type\UrlType;
 use App\Repository\EntrepriseRepository;
 use App\Repository\FormationRepository;
 use App\Entity\Entreprise;
+use App\Form\EntrepriseType;
 
 use Doctrine\ORM\EntityManagerInterface;
 
@@ -45,14 +46,8 @@ class EntreprisesController extends AbstractController
     {
         $entreprise = new Entreprise();
 
-        $formulaireEntreprise = $this -> createFormBuilder($entreprise)
-                                        ->add('nom', TextType::class)
-                                        ->add('activite', TextareaType::class)
-                                        ->add('adresse',TextType::class)
-                                        ->add('urlSite',UrlType::class)
-                                        ->getForm();
+        $formulaireEntreprise = $this -> createForm(EntrepriseType::class, $entreprise);
         
-
         $formulaireEntreprise->handleRequest($requetteHttp);
                         
         if($formulaireEntreprise->isSubmitted()&&$formulaireEntreprise->isValid())
@@ -73,13 +68,7 @@ class EntreprisesController extends AbstractController
      */
     public function modifierEntreprise(Request $requetteHttp, EntityManagerInterface $manager, Entreprise $entreprise)
     {
-        $formulaireEntreprise = $this -> createFormBuilder($entreprise)
-                                        ->add('nom', TextType::class)
-                                        ->add('activite', TextareaType::class)
-                                        ->add('adresse',TextType::class)
-                                        ->add('urlSite',UrlType::class)
-                                        ->getForm();
-        
+        $formulaireEntreprise = $this -> createForm(EntrepriseType::class, $entreprise);        
 
         $formulaireEntreprise->handleRequest($requetteHttp);
                         
