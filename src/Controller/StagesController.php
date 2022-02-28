@@ -5,11 +5,15 @@ namespace App\Controller;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
+use Symfony\Component\HttpFoundation\Request;
 
 use App\Entity\Stage;
+use App\Form\StageType;
 
 use App\Repository\EntrepriseRepository;
 use App\Repository\FormationRepository;
+
+use Doctrine\ORM\EntityManagerInterface;
 
 class StagesController extends AbstractController
 {
@@ -37,4 +41,29 @@ class StagesController extends AbstractController
             'entreprises' =>$donneesEntreprises,
         ]);
     }
+
+    /**
+     * @Route("/ajoutStage", name="formulaireStage")
+     */
+    public function ajouterStage(Request $requetteHttp, EntityManagerInterface $manager)
+    {
+        $stage = new Stage();
+
+        $formulaireStage = $this -> createForm(StageType::class, $stage);
+        
+        $formulaireStage->handleRequest($requetteHttp);
+                        
+        if($formulaireStage->isSubmitted()&&$formulaireStage->isValid())
+        {
+            $manager->persist($stage);
+            $manager->flush();
+
+            return $this->redirectToRoute('accueil');
+        }
+
+        $vueFormulaireStage = $formulaireStage->createView();
+
+        return $this->render('stages/ajoutModifStage.html.twig',['vueFormulaireStage' => $vueFormulaireStage,'action'=>"Ajouter"]);
+    }
+
 }
