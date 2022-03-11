@@ -40,7 +40,7 @@ class EntreprisesController extends AbstractController
     }
 
     /**
-     * @Route("/ajoutEntreprise", name="formulaireEntreprise")
+     * @Route("/admin/ajoutEntreprise", name="formulaireEntreprise")
      */
     public function ajouterEntreprise(Request $requetteHttp, EntityManagerInterface $manager)
     {
