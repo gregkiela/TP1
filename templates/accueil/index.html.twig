@@ -16,10 +16,10 @@
 		</div>
 		<div class="col-md-4 align-right">
         {% if is_granted('ROLE_USER') %}
-            <a href="{{path('app_logout')}}">Déconnexion</a>
+            <a class="border border-dark text-dark text-decoration-none" href="{{path('app_logout')}}">Déconnexion</a>
         {% else %}
-            <a href="{{path('app_login')}}">Connexion</a>
-            <a href="{{path('app_inscription')}}">Inscription</a>
+            <a class="border border-dark text-dark text-decoration-none" href="{{path('app_login')}}">Connexion</a>
+            <a class="border border-dark text-dark text-decoration-none" href="{{path('app_inscription')}}">Inscription</a>
         {% endif %}
 		</div>
 	</div>
