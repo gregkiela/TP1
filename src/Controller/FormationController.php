@@ -96,20 +96,13 @@ class FormationController extends AbstractController
     /**
      * @Route("/tri/{nom}", name="tri_formation")
      */
-    public function tri($nom,EntrepriseRepository $entrepriseRepository, FormationRepository $formationRepository,StageRepository $stageRepository): Response
+    public function tri($nom,FormationRepository $formationRepository): Response
     {
 
         $formation = $formationRepository->findOneBy(array("nomCourt"=>$nom));
-        $stages = $stageRepository -> trouverStagesParFormation($nom);
 
-        $donneesEntreprises = $entrepriseRepository->findAll();
-        $donneesFormations = $formationRepository->findAll();
-
-        return $this->render('tri_formation/index.html.twig', [
-            'controller_name' => 'TriFormationController',
-            'formation'=>$formation,'stages'=>$stages,
-            'formations' => $donneesFormations,
-            'entreprises' =>$donneesEntreprises,
+        return $this->render('formation/show.html.twig', [
+            'formation'=>$formation,
         ]);
     }
 }
