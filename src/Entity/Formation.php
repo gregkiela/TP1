@@ -97,6 +97,6 @@ class Formation
 
     public function __toString()
     {
-        return this->getNomLong();
+        return $this->getNomLong();
     }
 }
