@@ -29,7 +29,7 @@ class FormationController extends AbstractController
     }
 
     /**
-     * @Route("/new", name="formation_new", methods={"GET", "POST"})
+     * @Route("/ajout", name="formation_new", methods={"GET", "POST"})
      */
     public function new(Request $request, EntityManagerInterface $entityManager): Response
     {
@@ -61,7 +61,7 @@ class FormationController extends AbstractController
     }
 
     /**
-     * @Route("/{id}/edit", name="formation_edit", methods={"GET", "POST"})
+     * @Route("/modifier/{id}", name="formation_edit", methods={"GET", "POST"})
      */
     public function edit(Request $request, Formation $formation, EntityManagerInterface $entityManager): Response
     {
@@ -81,7 +81,7 @@ class FormationController extends AbstractController
     }
 
     /**
-     * @Route("/{id}", name="formation_delete", methods={"POST"})
+     * @Route("/supprimer/{id}", name="formation_delete", methods={"POST"})
      */
     public function delete(Request $request, Formation $formation, EntityManagerInterface $entityManager): Response
     {

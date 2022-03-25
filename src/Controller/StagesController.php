@@ -15,10 +15,14 @@ use App\Repository\FormationRepository;
 
 use Doctrine\ORM\EntityManagerInterface;
 
+/**
+     * @Route("/stage")
+     */
+
 class StagesController extends AbstractController
 {
     /**
-     * @Route("/stages/{id}", name="stage")
+     * @Route("/{id}", name="stage")
      */
     public function index(EntrepriseRepository $entrepriseRepository, FormationRepository $formationRepository, Stage $donneesStage): Response
     {
@@ -43,7 +47,7 @@ class StagesController extends AbstractController
     }
 
     /**
-     * @Route("/ajoutStage", name="formulaireStage")
+     * @Route("/ajouter", name="formulaireStage")
      */
     public function ajouterStage(Request $requetteHttp, EntityManagerInterface $manager)
     {

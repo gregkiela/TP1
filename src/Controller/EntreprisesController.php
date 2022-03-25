@@ -12,15 +12,20 @@ use Symfony\Component\Form\Extension\Core\Type\UrlType;
 
 use App\Repository\EntrepriseRepository;
 use App\Repository\FormationRepository;
+use App\Repository\StageRepository;
 use App\Entity\Entreprise;
 use App\Form\EntrepriseType;
 
 use Doctrine\ORM\EntityManagerInterface;
 
+/**
+     * @Route("/entreprise")
+*/
+
 class EntreprisesController extends AbstractController
 {
     /**
-     * @Route("/entreprises", name="entreprises")
+     * @Route("/", name="entreprises")
      */
     public function index(EntrepriseRepository $entrepriseRepository, FormationRepository $formationRepository): Response
     {
@@ -40,7 +45,7 @@ class EntreprisesController extends AbstractController
     }
 
     /**
-     * @Route("/admin/ajoutEntreprise", name="formulaireEntreprise")
+     * @Route("/ajout", name="formulaireEntreprise")
      */
     public function ajouterEntreprise(Request $requetteHttp, EntityManagerInterface $manager)
     {
@@ -64,7 +69,7 @@ class EntreprisesController extends AbstractController
     }
 
     /**
-     * @Route("/modifierEntreprise/{id}", name="modifFormulaire")
+     * @Route("/modifier/{id}", name="modifFormulaire")
      */
     public function modifierEntreprise(Request $requetteHttp, EntityManagerInterface $manager, Entreprise $entreprise)
     {
@@ -83,5 +88,23 @@ class EntreprisesController extends AbstractController
         $vueFormulaireEntreprise = $formulaireEntreprise->createView();
 
         return $this->render('entreprises/ajoutModifEntreprise.html.twig',['vueFormulaireEntreprise' => $vueFormulaireEntreprise,'action'=>"Modifier"]);
+    }
+
+    /**
+     * @Route("/{nom}", name="tri_entreprise")
+     */
+    public function tri($nom, EntrepriseRepository $entrepriseRepository, FormationRepository $formationRepository, StageRepository $stageRepository, Entreprise $entreprise): Response
+    {
+        $stages = $stageRepository -> trouverStagesParEntreprise($nom);
+
+        $donneesEntreprises = $entrepriseRepository->findAll();
+        $donneesFormations = $formationRepository->findAll();
+
+        return $this->render('tri_entreprise/index.html.twig', [
+            'controller_name' => 'TriEntrepriseController',
+            'entreprise'=>$entreprise, 'stages'=>$stages,
+            'formations' => $donneesFormations,
+            'entreprises' =>$donneesEntreprises,
+        ]);
     }
 }
