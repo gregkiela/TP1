@@ -1,96 +1,39 @@
 {% extends 'base.html.twig' %}
 
-{% block title %}{{parent()}} d'accueil !{% endblock %}
-{% block header %}
-    <style>
-        .example-wrapper { margin: 1em auto; max-width: 800px; width: 95%; font: 18px/1.5 sans-serif; text-align: center }
-        .example-wrapper code { background: #F5F5F5; padding: 2px 6px; }
-    </style>
-
+{% block contenu %}
     <div class="container-fluid">
-	<div class="row">
-		<div class="col-md-4">
-		</div>
-		<div class="col-md-4">
-        <h1>Bienvenue sur la page d'accueil de ProStages!</h1>
-		</div>
-		<div class="col-md-4 align-right">
-        {% if is_granted('ROLE_USER') %}
-            <a class="border border-dark text-dark text-decoration-none" href="{{path('app_logout')}}">Déconnexion</a>
-        {% else %}
-            <a class="border border-dark text-dark text-decoration-none" href="{{path('app_login')}}">Connexion</a>
-            <a class="border border-dark text-dark text-decoration-none" href="{{path('app_inscription')}}">Inscription</a>
-        {% endif %}
-		</div>
-	</div>
-</div>
-{% endblock %}
-{% block body %}
-<div class="container-fluid">
-    <div class="row">              
-        <div class="col-md-4">
-            {% block entreprises %}  
-                <div class="row">
-                    <div class="col-md-12">
-                        <div class="card">
-                            <h5 class="card-header">
-                                <a href=/entreprises class= "text-black"> Entreprises</a>                               
-                            </h5>
-                            <div class="card-body">
-                                <ul class="list-unstyled">
-                                    {% for entreprise in entreprises %}
-                                        <div class="row">
-                                            <div class="col-md-12">
-                                                <li><a href={{ path('tri_entreprise', {'nom' : entreprise.nom}) }} class="text-black">{{entreprise.nom}}</a></li>
-                                            </div>
-                                        </div>                                        
-                                    {% endfor %}
-                                </ul>
-                                <a href={{ path('formulaireEntreprise') }} class="text-black">Ajouter une entreprise</a>
-                            </div>                        
-                        </div>
-                    </div>
-                </div>                              
-            {% endblock %}
-
-            {% block formations %}   
-                <div class="row">
-                    <div class="col-md-12">
-                    <div class="card">
-                            <h5 class="card-header">    
-                                <a href={{ path('formation_index') }} class= "text-black"> Formations</a>
-                            </h5>
-                            <div class="card-body">
-                                <ul class="list-unstyled">
-                                    {% for formation in formations %}
-                                        <div class="row">
-                                            <div class="col-md-12">
-                                                <li><a href={{ path('tri_formation', {'nom' : formation.nomCourt}) }} class="text-black">{{formation.nomCourt}}</a></li>
-                                            </div>
-                                        </div>  
-                                    {% endfor %}
-                                </ul>
-                            </div>                        
-                        </div>
-                    </div>
-                </div>
-            {% endblock %}
+        <div class="row">
+            <div class="col-md-12">
+            <br>
+            <h2 class="text-decoration-underline">Liste des stages : </h2>
+            <br>
+            </div>
         </div>
-        {% block stages %} 
-            <div class="col-md-8">
+        <div class="row">
+            <div class="col-md-12">
                 {% for stage in stages %}
                     <div class="card">
-                        <h5 class="card-header">    
-                            <a href=/stages/{{stage.id}} class="text-decoration-none text-black">{{stage.titre}}</a>
-                        </h5>
                         <div class="card-body">
-                            <p class="card-text">{{stage.description}}</p>
-                        </div>                        
-                    </div>                
+                            <h5 class="card-title">
+                                {{ stage.titre }}
+                            </h5>
+                            <h6 class="card-subtitle mb-2 text-muted">
+                                {{ stage.email }}
+                            </h6>
+                            <p class="card-text">
+                                {{ stage.description }}
+                            </p>
+                            <a href={{path('stage',{'id' : stage.id})}} class="btn btn-dark">
+                                Consulter
+                            </a>
+                        </div>
+                    </div>
                 {% endfor %}
-                <a href={{ path('formulaireStage') }} class="text-black">Ajouter un stage</a>
-            </div> 
-        {% endblock %}
+                <br>
+                    <a href={{path('formulaireStage')}} class="btn btn-dark">
+                        Ajouter un stage                                        
+                    </a>
+            </div>
+        </div>
     </div>
-</div>
-{% endblock %}
+{% endblock %}    

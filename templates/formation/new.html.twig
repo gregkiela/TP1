@@ -1,11 +1,22 @@
 {% extends 'base.html.twig' %}
 
-{% block title %}New Formation{% endblock %}
+{% block contenu %}
+    <div class="container-fluid">
+        <div class="row">
+            <div class="col-md-12">
+                <h2 class="text-decoration-underline">
+                    jouter une formation
+                </h2>
 
-{% block body %}
-    <h1>Create new Formation</h1>
+                {{ include('formation/_form.html.twig') }}
 
-    {{ include('formation/_form.html.twig') }}
+                <br>
 
-    <a href="{{ path('formation_index') }}">back to list</a>
+                <a class="btn btn-dark" href="{{ path('formation_index') }}">
+                    Retourner à la liste
+                </a>
+
+            </div>
+        </div>
+    </div>
 {% endblock %}

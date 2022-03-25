@@ -18,7 +18,7 @@ use Doctrine\ORM\EntityManagerInterface;
 class StagesController extends AbstractController
 {
     /**
-     * @Route("/stages/{id}", name="stages")
+     * @Route("/stages/{id}", name="stage")
      */
     public function index(EntrepriseRepository $entrepriseRepository, FormationRepository $formationRepository, Stage $donneesStage): Response
     {

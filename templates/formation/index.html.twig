@@ -1,36 +1,62 @@
 {% extends 'base.html.twig' %}
+{% block contenu %}
+    <div class="container-fluid">
+        <div class="row">
+            <div class="col-md-12">
 
-{% block title %}Formations{% endblock %}
+                <table class="table">
+                    <thead>
+                        <tr>
+                            <th>
+                                Identifiant
+                            </th>
+                            <th>
+                                Nom long
+                            </th>
+                            <th>
+                                Nom court
+                            </th>
+                            <th>
+                                Actions
+                            </th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        {% for formation in formations %}
+                            <tr>
+                                <td>
+                                    {{ formation.id }}
+                                </td>
+                                <td>
+                                    {{ formation.nomLong }}
+                                </td>
+                                <td>
+                                    {{ formation.nomCourt }}
+                                </td>
+                                <td>
+                                    <a class="btn btn-dark" href="{{ path('formation_show', {'id': formation.id}) }}">
+                                        Afficher
+                                    </a>
+                                    <a class="btn btn-dark" href="{{ path('formation_edit', {'id': formation.id}) }}">
+                                        Editer
+                                    </a>
+                                </td>
+                            </tr>
+                        {% else %}
+                            <tr>
+                                <td colspan="4">
+                                    Aucune formation enregistrée
+                                </td>
+                            </tr>
+                        {% endfor %}
+                    </tbody>
+                </table>
 
-{% block body %}
+                <a class="btn btn-dark" href="{{ path('formation_new') }}">
+                    Créer une nouvelle formation
+                </a>
 
-    <table class="table">
-        <thead>
-            <tr>
-                <th>Id</th>
-                <th>NomLong</th>
-                <th>NomCourt</th>
-                <th>actions</th>
-            </tr>
-        </thead>
-        <tbody>
-        {% for formation in formations %}
-            <tr>
-                <td>{{ formation.id }}</td>
-                <td>{{ formation.nomLong }}</td>
-                <td>{{ formation.nomCourt }}</td>
-                <td>
-                    <a href="{{ path('formation_show', {'id': formation.id}) }}">Afficher</a>
-                    <a href="{{ path('formation_edit', {'id': formation.id}) }}">Editer</a>
-                </td>
-            </tr>
-        {% else %}
-            <tr>
-                <td colspan="4">Aucune formation enregistrée</td>
-            </tr>
-        {% endfor %}
-        </tbody>
-    </table>
-
-    <a href="{{ path('formation_new') }}">Créer une nouvelle formation</a>
+            </div>
+        </div>
+    </div>
 {% endblock %}
